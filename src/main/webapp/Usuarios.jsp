@@ -4,40 +4,35 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Usuarios</title>
+<title>Modulo Usuarios</title>
 <link rel="stylesheet" href="css/estilosUsuarios.css">
 </head>
 <body>
-<%!String cedula=""; String nombre="", correo="", pass="", user="", estado="";%>
+	<%!String cedula=""; String nombre="", correo="", user="", pass="", estado="";%>
 
 	<%
-if(request.getParameter("cedula")!=null){
-	cedula = request.getParameter("cedula");
-	correo = request.getParameter("correo");
-	nombre = request.getParameter("nombre");
-	pass = request.getParameter("pass");
-	user = request.getParameter("user");
-	estado= "disabled";
-	
-
-}
-	
-
-
-%>
+	if(request.getParameter("cedula")!=null){
+		cedula = request.getParameter("cedula");
+		nombre = request.getParameter("nombre");
+		correo = request.getParameter("correo");
+		pass = request.getParameter("pass");
+		user = request.getParameter("user");
+		estado= "disabled";
+	}
+	%>
 
 	<div class="titulo">
-		<h1>Tienda Generica</h1>
+		<h1>Gestion de Usuarios</h1>
 	</div>
 	<header>
 		<nav>
 			<ul>
 				<li><a href="Usuarios.jsp">Usuarios</a></li>
-				<li><a href="#">Clientes</a></li>
-				<li><a href="# ">Proveedores</a></li>
-				<li><a href="# ">Productos</a></li>
-				<li><a href="# ">Ventas</a></li>
-				<li><a href="# ">Reportes</a></li>
+				<li><a href="Clientes.jsp">Clientes</a></li>
+				<li><a href="Proveedores.jsp">Proveedores</a></li>
+				<li><a href="Productos.jsp">Productos</a></li>
+				<li><a href="Ventas.jsp">Ventas</a></li>
+				<li><a href="Reportes.jsp">Reportes</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -51,16 +46,17 @@ if(request.getParameter("cedula")!=null){
 				</div>
 				<div>
 					<input type="text" name="cedula" value="<%=cedula%>" <%=estado%>>
-					<input type="hidden" name="id" value="<%=cedula%>"> <input
-						type="text" name="nombre" value="<%=nombre%>"> <input
-						type="email" name="correo" value="<%=correo%>">
+					<input type="hidden" name="id" value="<%=cedula%>"> 
+					<input type="text" name="nombre" value="<%=nombre%>">
+					<input type="email" name="correo" value="<%=correo%>">
 				</div>
 				<div>
-					<label for="">Usuario</label> <label for="">Contraseña</label>
+					<label for="">Usuario</label>
+					<label for="">Contraseña</label>
 				</div>
 				<div>
-					<input type="text" name="user" value="<%=user%>"> <input
-						type="password" name="pass" value="<%=pass%>">
+					<input type="text" name="user" value="<%=user%>">
+					<input type="password" name="pass" value="<%=pass%>">
 				</div>
 			</div>
 			<div class="contenedorBotones">
