@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.swing.JOptionPane;
 import Modelo.ClienteDAO;
 import Modelo.ClienteDTO;
 
@@ -32,17 +32,17 @@ public class Clientes extends HttpServlet {
 		ClienteDAO cDAO = new ClienteDAO();
 		
 		if(request.getParameter("crear")!=null) {
-			String nombre, cedula, email, direccion, telefono;			
+			String cedula, nombre, correo, direccion, telefono;
 			cedula = request.getParameter("cedula");
 			nombre = request.getParameter("nombre");
-			email =  request.getParameter("email");
-			telefono = request.getParameter("direccion");
-			direccion = request.getParameter("telefono");
-			ClienteDTO cDTO = new ClienteDTO(cedula, nombre, email, direccion, telefono);
-			if(cDAO.CrearCliente(cDTO)) {
-				response.sendRedirect("Clientes.jsp?mensaje=Cliente creado exitosamente");
+			correo = request.getParameter("correo");
+			direccion = request.getParameter("direccion");
+			telefono = request.getParameter("telefono");
+			ClienteDTO cDTO = new ClienteDTO(cedula, correo,nombre, direccion, telefono);
+			if(cDAO.crearCliente(cDTO)) {
+				response.sendRedirect("Usuarios.jsp?mensaje=Cliente creado exitosamente");
 			}else {
-				response.sendRedirect("Clientes.jsp?mensaje=Error al crear el cliente");
+				response.sendRedirect("Usuarios.jsp?mensaje=Error al crear el Cliente");
 			}
 		}
 		
@@ -50,54 +50,51 @@ public class Clientes extends HttpServlet {
 			String cedula = request.getParameter("cedula");
 			ClienteDTO cDTO = cDAO.consultarCliente(cedula);
 			if(cDTO!=null) {
-				String nombre, email, direccion, telefono;
+				String nombre, correo, direccion, telefono;
 				cedula = cDTO.getCedula_cliente();
 				nombre = cDTO.getNombre_cliente();
-				email = cDTO.getEmail_cliente();
+				correo = cDTO.getEmail_cliente();
 				direccion = cDTO.getDireccion_cliente();
 				telefono = cDTO.getTelefono_cliente();
-				response.sendRedirect("Clientes.jsp?cedula="+cedula+"&&nombre="+nombre+"&&email="+email+"&&direccion="+direccion+"&&telefono="+telefono);
+				response.sendRedirect("Clientes.jsp?cedula="+cedula+"&&nombre="+nombre+"&&correo="+correo+"&&direccion="+direccion+"&&telefono="+telefono);
 			}else {
-				response.sendRedirect("Clientes.jsp?mensaje=Error al consultar el cliente");
+				JOptionPane.showMessageDialog(null, "Error al consultar el cliente");
+				response.sendRedirect("Clientes.jsp");
 			}
-			
 		}
 		
 		else if(request.getParameter("actualizar")!=null) {
-			String cedula, nombre, email, direccion, telefono;
-			cedula = request.getParameter("id");
+			String cedula, nombre, correo, direccion, telefono;
+			cedula = request.getParameter("id");//NOTA: se utiliza esta variable ya que se deshabilito el input "cedula" del Usuarios.jsp
 			nombre = request.getParameter("nombre");
-			email = request.getParameter("email");
+			correo = request.getParameter("correo");
 			direccion = request.getParameter("direccion");
 			telefono = request.getParameter("telefono");
-			ClienteDTO cDTO = new ClienteDTO(cedula, nombre, email, direccion, telefono);
+			ClienteDTO cDTO = new ClienteDTO(cedula, nombre, correo, direccion, telefono);
 			if(cDAO.actualizarCliente(cDTO)) {
 				response.sendRedirect("Clientes.jsp?mensaje=Cliente actualizado exitosamente");
 			}else {
-				response.sendRedirect("Clientes.jsp?mensaje=Error al actualizar el cliente");
-				response.sendRedirect("Clientes.jsp");
+				response.sendRedirect("Clientes.jsp?mensaje=Error al actualizar el cliente(en Servlet)");
 			}
-			
 		}
 		
 		else if(request.getParameter("eliminar")!=null) {
-			String cedula = request.getParameter("id");
+			String cedula = request.getParameter("id");			
 			if(cDAO.eliminarCliente(cedula)) {
 				response.sendRedirect("Clientes.jsp?mensaje=Cliente eliminado exitosamente");
 			}else {
 				response.sendRedirect("Clientes.jsp?mensaje=Error al eliminar el cliente");
-				response.sendRedirect("Clientes.jsp");
 			}
 		}
 		
 else if(request.getParameter("limpiar") != null) {			
-			String cedula,nombre, correo, direccion, telefono,estado;
+			String cedula,nombre, correo, direccion, telefono;
 			cedula = "";
 			nombre = "";
 			correo = "";
 			direccion = "";
 			telefono = "";
-			response.sendRedirect("Cliente.jsp?cedula="+cedula+"&&direccion="+direccion+"&&email="+correo+"&&nombre="+nombre+"&&telefono="+telefono);
+			response.sendRedirect("Cliente.jsp?cedula="+cedula+"&&nombre="+nombre+"&&email="+correo+"&&direccion="+direccion+"&&telefono="+telefono);
 			
 		}
 	}

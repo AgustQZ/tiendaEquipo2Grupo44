@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
-
 import Controlador.Conexion;
 
 public class UsuarioDAO {
@@ -27,7 +25,7 @@ public class UsuarioDAO {
 			ps.setString(5, uDTO.getPassword());
 			resultado = ps.executeUpdate()>0;			
 		} catch (SQLException sqle) {
-			JOptionPane.showMessageDialog(null, "Error al insertar el usuario"+sqle);
+			JOptionPane.showMessageDialog(null, "Error al insertar el usuario. "+sqle);
 		}
 		return resultado;	
 	}
@@ -43,7 +41,7 @@ public class UsuarioDAO {
 				uDTO = new UsuarioDTO(resultado.getString(1), resultado.getString(2), resultado.getString(3), resultado.getString(4), resultado.getString(5));
 			}
 		} catch (SQLException sqle) {
-			JOptionPane.showMessageDialog(null, "Error al consultar el usuario "+sqle);
+			JOptionPane.showMessageDialog(null, "Error al consultar el usuario. "+sqle);
 		}
 		return uDTO;
 	}
@@ -60,7 +58,7 @@ public class UsuarioDAO {
 			ps.setString(5, uDTO.getCedula_usuario());
 			bool = ps.executeUpdate()>0;			
 		} catch (SQLException sqle) {
-			JOptionPane.showMessageDialog(null, "Error al actualizar el usuario"+sqle);
+			JOptionPane.showMessageDialog(null, "Error al actualizar el usuario. "+sqle);
 		}
 		return bool;
 	}
@@ -73,7 +71,7 @@ public class UsuarioDAO {
 			ps.setString(1, cedula);
 			resultado = ps.executeUpdate()>0;
 		} catch (SQLException sqle) {
-			JOptionPane.showMessageDialog(null, "Error al eliminar el usuario"+sqle);
+			JOptionPane.showMessageDialog(null, "Error al eliminar el usuario. "+sqle);
 		}
 		return resultado;	
 	}

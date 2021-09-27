@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
-
 import Modelo.UsuarioDAO;
 import Modelo.UsuarioDTO;
 
@@ -35,16 +34,14 @@ public class Usuarios extends HttpServlet {
 		if(request.getParameter("crear")!=null) {
 			String cedula, nombre, correo, user, pass;
 			cedula = request.getParameter("cedula");
-			correo = request.getParameter("correo");
 			nombre = request.getParameter("nombre");
-			pass = request.getParameter("pass");
+			correo = request.getParameter("correo");
 			user = request.getParameter("user");
+			pass = request.getParameter("pass");
 			UsuarioDTO uDTO = new UsuarioDTO(cedula, correo,nombre, user, pass);
 			if(uDAO.crearUsuario(uDTO)) {
-				//JOptionPane.showMessageDialog(null, "Usuario creado exitosamente");
 				response.sendRedirect("Usuarios.jsp?mensaje=Usuario creado exitosamente");
 			}else {
-				//JOptionPane.showMessageDialog(null, "No se pudo crear el usuario");
 				response.sendRedirect("Usuarios.jsp?mensaje=Error al crear el usuario");
 			}
 		}
@@ -59,9 +56,9 @@ public class Usuarios extends HttpServlet {
 				nombre = uDTO.getNombre_usuario();
 				user = uDTO.getUsuario();
 				pass = uDTO.getPassword();
-				response.sendRedirect("Usuarios.jsp?cedula="+cedula+"&&correo="+correo+"&&nombre="+nombre+"&&user="+user+"&&pass="+pass);
+				response.sendRedirect("Usuarios.jsp?cedula="+cedula+"&&nombre="+nombre+"&&correo="+correo+"&&user="+user+"&&pass="+pass);
 			}else {
-				JOptionPane.showMessageDialog(null, "El usuario no existe");
+				JOptionPane.showMessageDialog(null, "Error al consultar el usuario");
 				response.sendRedirect("Usuarios.jsp");
 			}
 		}
@@ -86,19 +83,18 @@ public class Usuarios extends HttpServlet {
 			if(uDAO.eliminarUsuario(cedula)) {
 				response.sendRedirect("Usuarios.jsp?mensaje=Usuario eliminado exitosamente");
 			}else {
-				response.sendRedirect("Usuarios.jsp?mensaje=Cedula de usuario no existe");
+				response.sendRedirect("Usuarios.jsp?mensaje=Error al eliminar el cliente");
 			}
 		}
 		
 		else if(request.getParameter("limpiar") != null) {
-			//response.sendRedirect("Usuarios.jsp");
 			String cedula,nombre, correo, user, pass;
 			cedula = "";
 			correo ="";
 			nombre ="";
 			user = "";
 			pass ="";
-			response.sendRedirect("Usuarios.jsp?cedula="+cedula+"&&correo="+correo+"&&nombre="+nombre+"&&user="+user+"&&pass="+pass);
+			response.sendRedirect("Usuarios.jsp?cedula="+cedula+"&&nombre="+nombre+"&&correo="+correo+"&&user="+user+"&&pass="+pass);
 		}
 	}
 

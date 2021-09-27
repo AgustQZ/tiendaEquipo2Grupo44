@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/estilosUsuarios.css">
 </head>
 <body>
-	<%!String cedula=""; String nombre="", correo="", user="", pass="", estado="";%>
+	<%!String cedula="", nombre="", correo="", user="", pass="", estado="";%>
 
 	<%
 	if(request.getParameter("cedula")!=null){
@@ -41,8 +41,9 @@
 		<form action="Usuarios" method="post">
 			<div class="contenedorIN">
 				<div>
-					<label for="">Cedula</label> <label for="">Nombre Completo</label>
-					<label for="">Correo Electronico</label>
+					<label>Cedula</label>
+					<label>Nombre Completo</label>
+					<label>Correo Electronico</label>
 				</div>
 				<div>
 					<input type="text" name="cedula" value="<%=cedula%>" <%=estado%>>
@@ -51,8 +52,8 @@
 					<input type="email" name="correo" value="<%=correo%>">
 				</div>
 				<div>
-					<label for="">Usuario</label>
-					<label for="">Contraseña</label>
+					<label>Usuario</label>
+					<label>Contraseña</label>
 				</div>
 				<div>
 					<input type="text" name="user" value="<%=user%>">
@@ -69,10 +70,10 @@
 		</form>
 	</div>
 	<%
-if(request.getParameter("mensaje")!=null){
-	String mensaje = request.getParameter("mensaje");
-	out.print("<script>alert('"+mensaje+"');</script>");	
-}
-%>
+	if(request.getParameter("mensaje")!=null){
+		String mensaje = request.getParameter("mensaje");
+		out.print("<script>alert('"+mensaje+"');</script>");	
+	}
+	%>
 </body>
 </html>

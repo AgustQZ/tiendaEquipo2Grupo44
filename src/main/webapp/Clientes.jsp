@@ -8,18 +8,18 @@
 <link rel="stylesheet" href="css/estilosUsuarios.css">
 </head>
 <body>
-<%!String cedula=""; String nombre="", correo="", direccion="", telefono="", estado="";%>
+	<%!String cedula="", nombre="", correo="", direccion="", telefono="", estado="";%>
 
-<%
-if(request.getParameter("cedula")!=null){
-	cedula = request.getParameter("cedula");
-	nombre = request.getParameter("nombre");
-	correo = request.getParameter("email");
-	direccion = request.getParameter("direccion");
-	telefono = request.getParameter("telefono");
-	estado= "disabled";
-}
-%>
+	<%
+	if(request.getParameter("cedula")!=null){
+		cedula = request.getParameter("cedula");
+		nombre = request.getParameter("nombre");
+		correo = request.getParameter("correo");
+		direccion = request.getParameter("direccion");
+		telefono = request.getParameter("telefono");
+		estado= "disabled";
+	}
+	%>
 
 	<div class="titulo">
         <h1>Gestion de Clientes</h1>
@@ -41,24 +41,24 @@ if(request.getParameter("cedula")!=null){
         <form action="Clientes" method="post">
             <div class="contenedorIN">
                 <div>
-                    <label for="">Cedula</label>
-                    <label for="">Nombre Completo</label>
-                    <label for="">Correo Electronico</label>
-                </div>
+					<label>Cedula</label>
+					<label>Nombre Completo</label>
+					<label>Correo Electronico</label>
+				</div>
+				<div>
+					<input type="text" name="cedula" value="<%=cedula%>" <%=estado%>>
+					<input type="hidden" name="id" value="<%=cedula%>"> 
+					<input type="text" name="nombre" value="<%=nombre%>">
+					<input type="email" name="correo" value="<%=correo%>">
+				</div>
                 <div>
-                    <input type="text" name="cedula" value="<%=cedula%>" <%=estado%>>
-                    <input type="hidden" name="id" value="<%=cedula%>">
-                    <input type="text" name="nombre" value="<%=nombre%>">
-                    <input type="email" name="email" value="<%=correo%>">
-                </div>
-                <div>
-                    <label for="">Direccion</label>
-                    <label for="">Telefono</label>
-                </div>
-                <div>
-                	<input type="text" name="direccion" value="<%=direccion%>">
-                	<input type="text" name="telefono" value="<%=telefono%>">
-                </div>
+					<label>Direccion</label>
+					<label>Telefono</label>
+				</div>
+				<div>
+					<input type="text" name="direccion" value="<%=direccion%>">
+					<input type="text" name="telefono" value="<%=telefono%>">
+				</div>
             </div>
             <div class="contenedorBotones">
                 <input type="submit" name="crear" value="Crear">
@@ -69,12 +69,11 @@ if(request.getParameter("cedula")!=null){
             </div>
         </form>
     </div>
-    
-<%
-if(request.getParameter("mensaje")!=null){
-	String mensaje = request.getParameter("mensaje");
-	out.print("<script>alert('"+mensaje+"');</script>");	
-}
-%>
+	<%
+	if(request.getParameter("mensaje")!=null){
+		String mensaje = request.getParameter("mensaje");
+		out.print("<script>alert('"+mensaje+"');</script>");	
+	}
+	%>
 </body>
 </html>
