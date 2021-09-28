@@ -3,20 +3,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Modulo Proveedores</title>
-<link rel="stylesheet" href="css/estilosUsuarios.css">
+	<meta charset="ISO-8859-1">
+	<title>Modulo Proveedores</title>
+	<link rel="stylesheet" href="css/estilosUsuarios.css">
 </head>
 <body>
-	<%!String cedula=""; String nombre="", correo="", user="", pass="", estado="";%>
+	<%!String nit="", nombre="", direccion="", telefono="", ciudad="", estado="";%>
 
 	<%
-	if(request.getParameter("cedula")!=null){
-		cedula = request.getParameter("cedula");
+	if(request.getParameter("nit")!=null){
+		nit = request.getParameter("nit");
 		nombre = request.getParameter("nombre");
-		correo = request.getParameter("correo");
-		pass = request.getParameter("pass");
-		user = request.getParameter("user");
+		direccion = request.getParameter("direccion");
+		telefono = request.getParameter("telefono");
+		ciudad = request.getParameter("ciudad");
 		estado= "disabled";
 	}
 	%>
@@ -36,6 +36,44 @@
 			</ul>
 		</nav>
 	</header>
-
+	
+	<div class="contendor-fluid">
+		<form action="Proveedores" method="post">
+			<div class="contenedorIN">
+				<div>
+					<label>NIT</label>
+					<label>Nombre</label>
+					<label>Direccion</label>
+				</div>
+				<div>
+					<input type="text" name="nit" value="<%=nit%>" <%=estado%>>
+					<input type="hidden" name="id" value="<%=nit%>"> 
+					<input type="text" name="nombre" value="<%=nombre%>">
+					<input type="text" name="direccion" value="<%=direccion%>">
+				</div>
+				<div>
+					<label>Telefono</label>
+					<label>Ciudad</label>
+				</div>
+				<div>
+					<input type="text" name="telefono" value="<%=telefono%>">
+					<input type="text" name="ciudad" value="<%=ciudad%>">
+				</div>
+			</div>
+			<div class="contenedorBotones">
+				<input type="submit" name="crear" value="Crear"> 
+				<input type="submit" name="consultar" value="Consultar"> 
+					<input type="submit" name="actualizar" value="Actualizar"> 
+					<input	type="submit" name="eliminar" value="Eliminar">
+					<input type="submit" name="limpiar" value="Limpiar">
+			</div>
+		</form>
+	</div>
+	<%
+	if(request.getParameter("mensaje")!=null){
+		String mensaje = request.getParameter("mensaje");
+		out.print("<script>alert('"+mensaje+"');</script>");	
+	}
+	%>
 </body>
 </html>

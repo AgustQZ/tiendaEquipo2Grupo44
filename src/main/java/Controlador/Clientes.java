@@ -94,7 +94,7 @@ else if(request.getParameter("limpiar") != null) {
 			correo = "";
 			direccion = "";
 			telefono = "";
-			response.sendRedirect("Cliente.jsp?cedula="+cedula+"&&nombre="+nombre+"&&email="+correo+"&&direccion="+direccion+"&&telefono="+telefono);
+			response.sendRedirect("Clientes.jsp?cedula="+cedula+"&&nombre="+nombre+"&&email="+correo+"&&direccion="+direccion+"&&telefono="+telefono);
 			
 		}
 	}
