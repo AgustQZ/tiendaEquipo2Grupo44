@@ -46,6 +46,23 @@
                     <input type="submit" name="cargar" value="Cargar">
                 </div>
             </div>
+            <div class="Down">
+            	<h2>Actualizar Productos</h2>
+            	<div class="contenedorDown">
+            		<div>
+            			<label>Codigo</label> <input name="codigo">
+            		</div>
+            		<div>
+            			<label>Nombre</label> <input name="nombre">
+            		</div>
+            		<div>
+            			<label>Precio</label> <input name="precio">
+            		</div>
+            	</div>
+            	<div id="boton">
+            		<input type="submit" name="actualizar" value="Actualizar">
+            	</div>
+            </div>
         </form>
 	
 	<%
