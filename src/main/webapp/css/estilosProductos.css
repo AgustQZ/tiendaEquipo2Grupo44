@@ -95,48 +95,82 @@ h2 {
     border: none;
 }
 
-.Down{
-	background-color: #F2F2F2;
+.contenedorIN button {
+    width: 100px;
+    height: 40px;
+    font-size: 18px;
+    color: white;
+    background-color: gray;
+    border: none;
+    border-radius: 5px;
+}
+
+.contenedorIN button:hover {
+    background-color: rgb(149, 149, 149);
+    color: rgb(100, 100, 100);
+}
+
+.Down {
+    background-color: #F2F2F2;
     color: rgb(110, 110, 110);
+    margin-top: 25px;
+    padding: 10px 0 20px 0;
 }
 
-.contenedorDown{
-	display: flex;
-	justify-content: center;
+.contenedorDown {
+    display: flex;
+    justify-content: center;
     width: 1000px;
-    margin: 20px auto 0 auto;	
+    margin: 20px auto 0 auto;
 }
 
-.contenedorDown label{
-	display: inline-block;
-	color: gray;
-	font-size: 20px;
+.contenedorDown label {
+    display: inline-block;
+    color: gray;
+    font-size: 20px;
 }
 
-.contenedorDown input{
-	display: inline-block;
-	font-size: 20px;
-	width: 200px;
+.contenedorDown input {
+    display: inline-block;
+    font-size: 20px;
+    width: 200px;
 }
 
-#boton{
-	display: flex;
-	justify-content: center;
-}
-
-#boton input{
+.contenedorDown button{
 	width: 150px;
-	height: 40px;
-	font-family: calibri;
-	font-size: 20px;
-	background-color: darkgray;
-	color: white;
-	border-radius: 5px;
-	margin: 40px 10px 30px 10px;
-	border: none;
+    height: 40px;
+    font-size: 20px;
+    color: white;
+    background-color: gray;
+    border: none;
+    border-radius: 5px;
 }
 
-#boton input:hover{
+.contenedorDown button:hover{
 	background-color: rgb(149, 149, 149);
-	color: rgb(100, 100, 100);
+    color: rgb(100, 100, 100);
+}
+
+.botones {
+    width: 250px;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.botones button {
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    color: white;
+    background-color: gray;
+    border: none;
+    border-radius: 5px;
+    margin: 40px 10px 0 10px;
+    cursor: pointer;
+}
+
+.botones button:hover {
+    background-color: rgb(149, 149, 149);
+    color: rgb(100, 100, 100);
 }

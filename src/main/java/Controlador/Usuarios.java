@@ -88,13 +88,14 @@ public class Usuarios extends HttpServlet {
 		}
 		
 		else if(request.getParameter("limpiar") != null) {
-			String cedula,nombre, correo, user, pass;
+			String cedula,nombre, correo, user, pass, estado;
 			cedula = "";
 			correo ="";
 			nombre ="";
 			user = "";
 			pass ="";
-			response.sendRedirect("Usuarios.jsp?cedula="+cedula+"&&nombre="+nombre+"&&correo="+correo+"&&user="+user+"&&pass="+pass);
+			estado ="";
+			response.sendRedirect("Usuarios.jsp?cedula="+cedula+"&&nombre="+nombre+"&&correo="+correo+"&&user="+user+"&&pass="+pass+"&&estado"+estado);
 		}
 	}
 

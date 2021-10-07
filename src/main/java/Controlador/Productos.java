@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import javax.swing.JOptionPane;
-import Modelo.ProductosDAO;
+import Modelo.ProductoDAO;
+import Modelo.ProductoDTO;
 
 /**
  * Servlet implementation class Productos
@@ -34,7 +35,7 @@ public class Productos extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductosDAO pdDAO = new ProductosDAO();
+		ProductoDAO pdDAO = new ProductoDAO();
 		
 		if(request.getParameter("cargar")!=null) {
 			Part archivo = request.getPart("archivo");
@@ -54,12 +55,65 @@ public class Productos extends HttpServlet {
 				if(pdDAO.cargarArchivo(rutaDestino+"ProductosPC.csv")) {
 					response.sendRedirect("Productos.jsp?mensaje=Se insertaron los productos correctamente");
 				}else {
-					response.sendRedirect("Productos.jsp?mensaje=Error al insertar los productos (01)");
+					response.sendRedirect("Productos.jsp?mensaje=Error al insertar los productos en el servlet. ");
 				}
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, "Error al cargar. "+e);
 			}
 		}
+		
+		if (request.getParameter("consultar")!=null) {
+			String codigo = request.getParameter("codigo");
+			ProductoDTO pdDTO = pdDAO.consultarProducto(codigo);
+			if(pdDTO!=null) {
+				String nombre;
+				int precio;
+				codigo = pdDTO.getCodigo();
+				nombre = pdDTO.getNombre();
+				precio = pdDTO.getPrecioVenta();
+				response.sendRedirect("Productos.jsp?codigo="+codigo+"&&nombre="+nombre+"&&precio="+precio);
+			}else {
+				JOptionPane.showMessageDialog(null, "Error al consultar consultar el producto en el servlet. ");
+				response.sendRedirect("Productos.jsp");
+			}
+		}
+		
+		else if(request.getParameter("actualizar")!=null) {
+			String codigo, nombre;
+			int precio;
+			codigo = request.getParameter("code");
+			nombre = request.getParameter("nombre");
+			precio = Integer.parseInt(request.getParameter("precio"));
+			ProductoDTO pdDTO = new ProductoDTO(codigo, nombre, precio);
+			if(pdDAO.actualizarProducto(pdDTO)) {
+				response.sendRedirect("Productos.jsp?mensaje=Producto actualizado exitosamente.");
+			}else {
+				response.sendRedirect("Productos.jsp?mensaje=Error al actualizar el producto.");
+			}
+		}
+		
+		else if(request.getParameter("cancelar") != null) {
+			response.sendRedirect("Productos.jsp=mensaje");
+		}
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -40,9 +40,9 @@ public class Clientes extends HttpServlet {
 			telefono = request.getParameter("telefono");
 			ClienteDTO cDTO = new ClienteDTO(cedula, correo,nombre, direccion, telefono);
 			if(cDAO.crearCliente(cDTO)) {
-				response.sendRedirect("Usuarios.jsp?mensaje=Cliente creado exitosamente");
+				response.sendRedirect("Clientes.jsp?mensaje=Cliente creado exitosamente");
 			}else {
-				response.sendRedirect("Usuarios.jsp?mensaje=Error al crear el Cliente");
+				response.sendRedirect("Clientes.jsp?mensaje=Error al crear el Cliente");
 			}
 		}
 		

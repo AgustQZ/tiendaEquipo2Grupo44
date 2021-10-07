@@ -63,9 +63,9 @@
 			<div class="contenedorBotones">
 				<input type="submit" name="crear" value="Crear"> 
 				<input type="submit" name="consultar" value="Consultar"> 
-					<input type="submit" name="actualizar" value="Actualizar"> 
-					<input	type="submit" name="eliminar" value="Eliminar">
-					<input type="submit" name="limpiar" value="Limpiar">
+				<input type="submit" name="actualizar" value="Actualizar"> 
+				<input	type="submit" name="eliminar" value="Eliminar">
+				<input type="submit" name="limpiar" value="Limpiar">
 			</div>
 		</form>
 	</div>

@@ -17,7 +17,7 @@
 		correo = request.getParameter("correo");
 		pass = request.getParameter("pass");
 		user = request.getParameter("user");
-		estado= "disabled";
+		estado= request.getParameter("estado");
 	}
 	%>
 
@@ -72,7 +72,7 @@
 	<%
 	if(request.getParameter("mensaje")!=null){
 		String mensaje = request.getParameter("mensaje");
-		out.print("<script>alert('"+mensaje+"');</script>");	
+		out.print("<script>alert('"+mensaje+"');</script>");
 	}
 	%>
 </body>
