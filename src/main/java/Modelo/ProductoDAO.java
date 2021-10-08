@@ -43,6 +43,22 @@ public class ProductoDAO {
 		return pdDTO;
 	}
 	
+	public ProductoDTO consultarProductoV(String codigo) {
+		ProductoDTO pdDTO = null;
+		try {
+			String consultar = "SELECT codigo_producto, nombre_producto, precio_venta, ivacompra FROM productos WHERE codigo_producto=?";
+			ps = con.prepareStatement(consultar);
+			ps.setString(1, codigo);
+			resultado = ps.executeQuery();
+			while(resultado.next()) {
+				pdDTO = new ProductoDTO(resultado.getString(1), resultado.getString(2), resultado.getInt(3), resultado.getInt(4));
+			}
+		} catch (SQLException sqle) {
+			JOptionPane.showMessageDialog(null, "Error al consultar el producto en DAO. ");
+		}
+		return pdDTO;
+	}
+	
 	public boolean actualizarProducto(ProductoDTO pdDTO) {
 		boolean bool = false;
 		try {

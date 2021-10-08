@@ -49,23 +49,17 @@ public class Ventas extends HttpServlet {
 			}
 		}
 		
-		if(request.getParameter("agregarPd1")!=null) {
-			int cant1 = Integer.parseInt(request.getParameter("cant1"));
-			int vOculto1 = Integer.parseInt(request.getParameter("vt1"));
-			int valorTotal1 = cant1 * vOculto1;
-			response.sendRedirect("Ventas.jsp?valorTotal1="+valorTotal1);
-		}
-		
 		if(request.getParameter("consultarPd1")!=null) {
 			String codigo1 = request.getParameter("codigo1");
-			ProductoDTO pdDTO = pdDAO.consultarProducto(codigo1);
+			ProductoDTO pdDTO = pdDAO.consultarProductoV(codigo1);
 			if(pdDTO!=null) {
 				String nombrePd1;
-				int precioPd1;
+				int precioPd1, ivaPd1;
 				codigo1 = pdDTO.getCodigo();
 				nombrePd1 = pdDTO.getNombre();
 				precioPd1 = pdDTO.getPrecioVenta();
-				response.sendRedirect("Ventas.jsp?codigo1="+codigo1+"&&nombrePd1="+nombrePd1+"&&precioPd1="+precioPd1);				
+				ivaPd1 = pdDTO.getIva();
+				response.sendRedirect("Ventas.jsp?codigo1="+codigo1+"&&nombrePd1="+nombrePd1+"&&precioPd1="+precioPd1+"&&ivaPd1="+ivaPd1);				
 			}else {
 				response.sendRedirect("Ventas.jsp?mensaje=Error al consultar el producto");
 				//JOptionPane.showMessageDialog(null, "Error al consultar el Producto");
@@ -75,12 +69,15 @@ public class Ventas extends HttpServlet {
 		
 		if(request.getParameter("consultarPd2")!=null) {
 			String codigo2 = request.getParameter("codigo2");
-			ProductoDTO pdDTO = pdDAO.consultarProducto(codigo2);
+			ProductoDTO pdDTO = pdDAO.consultarProductoV(codigo2);
 			if(pdDTO!=null) {
 				String nombrePd2;
+				int precioPd2, ivaPd2;
 				codigo2 = pdDTO.getCodigo();
 				nombrePd2 = pdDTO.getNombre();
-				response.sendRedirect("Ventas.jsp?codigo2="+codigo2+"&&nombrePd2="+nombrePd2);				
+				precioPd2 = pdDTO.getPrecioVenta();
+				ivaPd2 = pdDTO.getIva();
+				response.sendRedirect("Ventas.jsp?codigo2="+codigo2+"&&nombrePd2="+nombrePd2+"&&precioPd2="+precioPd2+"&&ivaPd2="+ivaPd2);				
 			}else {
 				response.sendRedirect("Ventas.jsp?mensaje=Error al consultar el producto");
 			}
@@ -88,15 +85,43 @@ public class Ventas extends HttpServlet {
 		
 		if(request.getParameter("consultarPd3")!=null) {
 			String codigo3 = request.getParameter("codigo3");
-			ProductoDTO pdDTO = pdDAO.consultarProducto(codigo3);
+			ProductoDTO pdDTO = pdDAO.consultarProductoV(codigo3);
 			if(pdDTO!=null) {
 				String nombrePd3;
+				int precioPd3, ivaPd3;
 				codigo3 = pdDTO.getCodigo();
 				nombrePd3 = pdDTO.getNombre();
-				response.sendRedirect("Ventas.jsp?codigo3="+codigo3+"&&nombrePd3="+nombrePd3);				
+				precioPd3 = pdDTO.getPrecioVenta();
+				ivaPd3 = pdDTO.getIva();
+				response.sendRedirect("Ventas.jsp?codigo3="+codigo3+"&&nombrePd3="+nombrePd3+"&&precioPd3="+precioPd3+"&&ivaPd3="+ivaPd3);				
 			}else {
 				response.sendRedirect("Ventas.jsp?mensaje=Error al consultar el producto");
 			}
+		}
+		
+		if(request.getParameter("confirmar")!=null) {
+			int cant1, cant2, cant3,
+				precio1, precio2, precio3,
+				ivaPd1, ivaPd2, ivaPd3, totalIva,
+				valorT1, valorT2, valorT3;
+			cant1 = Integer.parseInt(request.getParameter("cant1"));
+			precio1 = Integer.parseInt(request.getParameter("precio1"));
+			valorT1 = cant1 * precio1;
+			ivaPd1 = valorT1 / 100 * Integer.parseInt(request.getParameter("iva1"));
+			
+			cant2 = Integer.parseInt(request.getParameter("cant2"));
+			precio2 = Integer.parseInt(request.getParameter("precio2"));
+			valorT2 = cant2 * precio2;
+			ivaPd2 = valorT2 / 100 * Integer.parseInt(request.getParameter("iva2"));
+			
+			cant3 = Integer.parseInt(request.getParameter("cant3"));
+			precio3 = Integer.parseInt(request.getParameter("precio3"));
+			valorT3 = cant3 * precio3;
+			ivaPd3 = valorT3 / 100 * Integer.parseInt(request.getParameter("iva3"));
+			
+			totalIva = ivaPd1+ivaPd2+ivaPd3;
+			
+			response.sendRedirect("Ventas.jsp?cant1="+cant1+"&&valorT1="+valorT1+"&&totalIva="+totalIva+"&&cant2="+cant2+"&&valorT2="+valorT2+"&&cant3="+cant3+"&&valorT3="+valorT3);
 		}
 	}
 

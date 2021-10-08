@@ -8,10 +8,13 @@
 <link rel="stylesheet" href="css/estilosVentas.css">
 </head>
 <body>
-	<%!String cedulaCliente="", nombreCliente="", codigo1="", codigo2="", codigo3="",
-		nombrePd1="", nombrePd2="", nombrePd3="",		
-		estado="";
-		int consecutivo=0, precioPd1=0, valorTotal1=0;
+	<%!String 	cedulaCliente="", nombreCliente="", codigo1="", codigo2="", codigo3="",
+				nombrePd1="", nombrePd2="", nombrePd3="",		
+				estado="";
+		int 	cant1, cant2, cant3,
+				precioPd1, precioPd2, precioPd3,
+				ivaPd1, ivaPd2, ivaPd3, totalIva,
+		    	valorT1, valorT2, valorT3;
 	%>
 
 	<%
@@ -27,7 +30,7 @@
 		codigo1 = request.getParameter("codigo1");
 		nombrePd1 = request.getParameter("nombrePd1");
 		precioPd1 = Integer.parseInt(request.getParameter("precioPd1"));
-		valorTotal1 = Integer.parseInt(request.getParameter("valorTotal1"));
+		ivaPd1 = Integer.parseInt(request.getParameter("ivaPd1"));
 	}
 	%>
 	
@@ -35,6 +38,7 @@
 	if(request.getParameter("codigo2")!=null){
 		codigo2 = request.getParameter("codigo2");
 		nombrePd2 = request.getParameter("nombrePd2");
+		precioPd2 = Integer.parseInt(request.getParameter("precioPd2"));
 	}
 	%>
 	
@@ -42,6 +46,19 @@
 	if(request.getParameter("codigo3")!=null){
 		codigo3 = request.getParameter("codigo3");
 		nombrePd3 = request.getParameter("nombrePd3");
+		precioPd3 = Integer.parseInt(request.getParameter("precioPd3"));
+	}
+	%>
+	
+	<%
+	if(request.getParameter("valorT1")!=null){
+		cant1 = Integer.parseInt(request.getParameter("cant1"));
+		valorT1 = Integer.parseInt(request.getParameter("valorT1"));
+		totalIva = Integer.parseInt(request.getParameter("totalIva"));
+		cant2 = Integer.parseInt(request.getParameter("cant2"));
+		valorT2 = Integer.parseInt(request.getParameter("valorT2"));
+		cant3 = Integer.parseInt(request.getParameter("cant3"));
+		valorT3 = Integer.parseInt(request.getParameter("valorT3"));
 	}
 	%>
 	
@@ -96,16 +113,20 @@
                 <input type="text" name="nombrePd3" value="<%=nombrePd3%>" placeholder="Nombre del Producto 3">
             </div>
             <div class="cant">
-                <input type="text" name="cant1" placeholder="Cant">
-                <button type="submit" name="agregarPd1">Añadir P1</button>
-                <input type="text" name="cant2" placeholder="Cant">
-                <input type="text" name="cant3" placeholder="Cant">
+                <input type="text" name="cant1" value="<%=cant1%>">
+                <input type="text" name="cant2" value="<%=cant2%>">
+                <input type="text" name="cant3" value="<%=cant3%>">
             </div>
             <div class="valorT">
-                <input type="text" name="valorT1" value="<%=valorTotal1%>" placeholder="Valor Total">
-                <input type="hidden" name="vt1" value="<%=precioPd1%>">
-                <input type="text" name="valorT2" placeholder="Valor Total">
-                <input type="text" name="valorT3" placeholder="Valor Total">
+                <input type="text" name="valorT1" value="<%=valorT1%>">
+                <input type="hidden" name="precio1" value="<%=precioPd1%>">
+                <input type="hidden" name="iva1" value="<%=ivaPd1%>">
+                <input type="text" name="valorT2" value="<%=valorT2%>">
+                <input type="hidden" name="precio2" value="<%=precioPd2%>">
+                <input type="hidden" name="iva2" value="<%=ivaPd2%>">
+                <input type="text" name="valorT3" value="<%=valorT3%>">
+                <input type="hidden" name="precio3" value="<%=precioPd3%>">
+                <input type="hidden" name="iva3" value="<%=ivaPd3%>">
             </div>
         </div>
         <div class="totalesPadre">
@@ -114,13 +135,13 @@
                     <button type="submit" name="confirmar">Confirmar</button>
                 </div>
                 <div class="totalesLabels">
-                    <label for="">Total Venta $</label>
-                    <label for="">Total IVA $</label>
-                    <label for="">Total a Pagar $</label>
+                    <label for="">Total Venta =</label>
+                    <label for="">Total IVA =</label>
+                    <label for="">Total a Pagar =</label>
                 </div>
                 <div class="totalesInputs">
                     <input type="text" name="totalVenta">
-                    <input type="text" name="totalIVA">
+                    <input type="text" name="totalIVA" value="<%=totalIva%>">
                     <input type="text" name="totalPagar" ">
                 </div>
             </div>

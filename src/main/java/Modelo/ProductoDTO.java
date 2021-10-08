@@ -14,6 +14,14 @@ public class ProductoDTO {
 		this.nombre = nombre;
 		this.precioVenta = precioVenta;
 	}
+	
+	public ProductoDTO(String string, String nombre, int precioVenta, int iva) {
+		super();
+		this.codigo = string;
+		this.nombre = nombre;
+		this.precioVenta = precioVenta;
+		this.iva = iva;
+	}
 
 	public String getCodigo() {
 		return codigo;
