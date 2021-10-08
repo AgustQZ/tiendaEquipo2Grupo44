@@ -20,6 +20,19 @@ pageEncoding="ISO-8859-1"%>
 		estado= "disabled";
 	}
 	%>
+	
+	<%
+	if(request.getParameter("mensaje")!=null){
+		String mensaje = request.getParameter("mensaje");
+		out.print("<script>alert('"+mensaje+"');</script>");
+		cedula = "";
+		nombre = "";
+		correo = "";
+		direccion = "";
+		telefono = "";
+		estado = "";
+	}
+	%>
 
 	<div class="titulo">
         <h1>Gestion de Clientes</h1>
@@ -69,11 +82,6 @@ pageEncoding="ISO-8859-1"%>
             </div>
         </form>
     </div>
-	<%
-	if(request.getParameter("mensaje")!=null){
-		String mensaje = request.getParameter("mensaje");
-		out.print("<script>alert('"+mensaje+"');</script>");	
-	}
-	%>
+	
 </body>
 </html>

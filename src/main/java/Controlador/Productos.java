@@ -93,7 +93,7 @@ public class Productos extends HttpServlet {
 		}
 		
 		else if(request.getParameter("cancelar") != null) {
-			response.sendRedirect("Productos.jsp=mensaje");
+			response.sendRedirect("Productos.jsp?mensaje=Proceso cancelado");
 		}
 	}
 

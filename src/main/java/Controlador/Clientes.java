@@ -87,15 +87,8 @@ public class Clientes extends HttpServlet {
 			}
 		}
 		
-else if(request.getParameter("limpiar") != null) {			
-			String cedula,nombre, correo, direccion, telefono;
-			cedula = "";
-			nombre = "";
-			correo = "";
-			direccion = "";
-			telefono = "";
-			response.sendRedirect("Clientes.jsp?cedula="+cedula+"&&nombre="+nombre+"&&email="+correo+"&&direccion="+direccion+"&&telefono="+telefono);
-			
+		else if(request.getParameter("limpiar") != null) {
+			response.sendRedirect("Clientes.jsp?mensaje=Limpieza completada :)");
 		}
 	}
 }

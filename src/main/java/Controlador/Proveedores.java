@@ -90,14 +90,7 @@ public class Proveedores extends HttpServlet {
 		}
 		
 		else if(request.getParameter("limpiar") != null) {
-			String nit,nombre, direccion, telefono, ciudad, estado;
-			nit = "";
-			nombre ="";
-			direccion ="";
-			telefono = "";
-			ciudad ="";
-			estado ="";
-			response.sendRedirect("Proveedores.jsp?nit="+nit+"&&nombre="+nombre+"&&direccion="+direccion+"&&telefono="+telefono+"&&ciudad="+ciudad+"&&estado="+estado);
+			response.sendRedirect("Proveedores.jsp?mensaje=Limpeza completa :)");
 		}
 	}
 }

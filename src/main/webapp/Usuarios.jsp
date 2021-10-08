@@ -20,6 +20,19 @@
 		estado= request.getParameter("estado");
 	}
 	%>
+	
+	<%
+	if(request.getParameter("mensaje")!=null){
+		String mensaje = request.getParameter("mensaje");
+		out.print("<script>alert('"+mensaje+"');</script>");
+		cedula = "";
+		nombre = "";
+		correo = "";
+		pass = "";
+		user = "";
+		estado = "";
+	}
+	%>
 
 	<div class="titulo">
 		<h1>Gestion de Usuarios</h1>
@@ -69,11 +82,5 @@
 			</div>
 		</form>
 	</div>
-	<%
-	if(request.getParameter("mensaje")!=null){
-		String mensaje = request.getParameter("mensaje");
-		out.print("<script>alert('"+mensaje+"');</script>");
-	}
-	%>
 </body>
 </html>

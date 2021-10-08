@@ -16,7 +16,7 @@ public class ProveedorDAO {
 	public boolean crearProveedor(ProveedorDTO pvDTO) {
 		boolean resultado = false;
 		try {
-			String insertar = "insert into proveedores values (?,?,?,?,?)";
+			String insertar = "INSERT INTO proveedores VALUES (?,?,?,?,?)";
 			ps = con.prepareStatement(insertar);
 			ps.setString(1, pvDTO.getNit());			
 			ps.setString(2, pvDTO.getNombre());

@@ -7,6 +7,13 @@ public class UsuarioDTO {
 		private String usuario;
 		private String password;
 		
+		public UsuarioDTO() {
+		}
+		
+		public UsuarioDTO(String cedula_usuario) {
+			this.cedula_usuario = cedula_usuario;
+		}
+		
 		public UsuarioDTO(String cedula_usuario, String nombre_usuario, String email_usuario, String usuario, String password) {
 			this.cedula_usuario = cedula_usuario;
 			this.nombre_usuario = nombre_usuario;
