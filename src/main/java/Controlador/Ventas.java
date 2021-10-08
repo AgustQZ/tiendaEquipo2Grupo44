@@ -103,25 +103,27 @@ public class Ventas extends HttpServlet {
 			int cant1, cant2, cant3,
 				precio1, precio2, precio3,
 				ivaPd1, ivaPd2, ivaPd3, totalIva,
-				valorT1, valorT2, valorT3;
+				valorT1, valorT2, valorT3, totalVenta, totalPagar;
 			cant1 = Integer.parseInt(request.getParameter("cant1"));
 			precio1 = Integer.parseInt(request.getParameter("precio1"));
 			valorT1 = cant1 * precio1;
-			ivaPd1 = valorT1 / 100 * Integer.parseInt(request.getParameter("iva1"));
+			//ivaPd1 = valorT1 / 100 * Integer.parseInt(request.getParameter("iva1"));
 			
 			cant2 = Integer.parseInt(request.getParameter("cant2"));
 			precio2 = Integer.parseInt(request.getParameter("precio2"));
 			valorT2 = cant2 * precio2;
-			ivaPd2 = valorT2 / 100 * Integer.parseInt(request.getParameter("iva2"));
+			//ivaPd2 = valorT2 / 100 * Integer.parseInt(request.getParameter("iva2"));
 			
 			cant3 = Integer.parseInt(request.getParameter("cant3"));
 			precio3 = Integer.parseInt(request.getParameter("precio3"));
 			valorT3 = cant3 * precio3;
-			ivaPd3 = valorT3 / 100 * Integer.parseInt(request.getParameter("iva3"));
+			//ivaPd3 = valorT3 / 100 * Integer.parseInt(request.getParameter("iva3"));
 			
-			totalIva = ivaPd1+ivaPd2+ivaPd3;
+			totalVenta = valorT1 + valorT2 + valorT3;
+			totalIva = totalVenta * 19/100;
+			totalPagar = totalVenta + totalIva;
 			
-			response.sendRedirect("Ventas.jsp?cant1="+cant1+"&&valorT1="+valorT1+"&&totalIva="+totalIva+"&&cant2="+cant2+"&&valorT2="+valorT2+"&&cant3="+cant3+"&&valorT3="+valorT3);
+			response.sendRedirect("Ventas.jsp?cant1="+cant1+"&&valorT1="+valorT1+"&&cant2="+cant2+"&&valorT2="+valorT2+"&&cant3="+cant3+"&&valorT3="+valorT3+"&&totalVenta="+totalVenta+"&&totalIva="+totalIva+"&&totalPagar="+totalPagar);
 		}
 	}
 

@@ -14,7 +14,7 @@
 		int 	cant1, cant2, cant3,
 				precioPd1, precioPd2, precioPd3,
 				ivaPd1, ivaPd2, ivaPd3, totalIva,
-		    	valorT1, valorT2, valorT3;
+		    	valorT1, valorT2, valorT3, totalVenta, totalPagar;
 	%>
 
 	<%
@@ -51,14 +51,16 @@
 	%>
 	
 	<%
-	if(request.getParameter("valorT1")!=null){
+	if(request.getParameter("totalVenta")!=null){
 		cant1 = Integer.parseInt(request.getParameter("cant1"));
 		valorT1 = Integer.parseInt(request.getParameter("valorT1"));
-		totalIva = Integer.parseInt(request.getParameter("totalIva"));
 		cant2 = Integer.parseInt(request.getParameter("cant2"));
 		valorT2 = Integer.parseInt(request.getParameter("valorT2"));
 		cant3 = Integer.parseInt(request.getParameter("cant3"));
 		valorT3 = Integer.parseInt(request.getParameter("valorT3"));
+		totalVenta = Integer.parseInt(request.getParameter("totalVenta"));
+		totalIva = Integer.parseInt(request.getParameter("totalIva"));
+		totalPagar = Integer.parseInt(request.getParameter("totalPagar"));
 	}
 	%>
 	
@@ -140,9 +142,9 @@
                     <label for="">Total a Pagar =</label>
                 </div>
                 <div class="totalesInputs">
-                    <input type="text" name="totalVenta">
+                    <input type="text" name="totalVenta" value="<%=totalVenta%>">
                     <input type="text" name="totalIVA" value="<%=totalIva%>">
-                    <input type="text" name="totalPagar" ">
+                    <input type="text" name="totalPagar" value="<%=totalPagar%>">
                 </div>
             </div>
         </div>
