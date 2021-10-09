@@ -14,7 +14,7 @@ public class UsuarioDAO {
 	ResultSet resultado = null;
 	
 	public boolean crearUsuario(UsuarioDTO uDTO) {
-		boolean resultado = false;
+		boolean bool = false;
 		try {
 			String insertar = "insert into usuarios values (?,?,?,?,?)";
 			ps = con.prepareStatement(insertar);
@@ -23,11 +23,11 @@ public class UsuarioDAO {
 			ps.setString(3, uDTO.getNombre_usuario());
 			ps.setString(4, uDTO.getUsuario());
 			ps.setString(5, uDTO.getPassword());
-			resultado = ps.executeUpdate()>0;			
+			bool = ps.executeUpdate()>0;			
 		} catch (SQLException sqle) {
 			JOptionPane.showMessageDialog(null, "Error al insertar el usuario. "+sqle);
 		}
-		return resultado;	
+		return bool;	
 	}
 	
 	public UsuarioDTO consultarUsuario(String cedula) {

@@ -11,8 +11,10 @@ import javax.swing.JOptionPane;
 import Modelo.VentaDTO;
 import Modelo.ClienteDAO;
 import Modelo.ClienteDTO;
+import Modelo.DetalleVentaDTO;
 import Modelo.ProductoDAO;
 import Modelo.ProductoDTO;
+import Modelo.VentaDAO;
 /**
  * Servlet implementation class Ventas
  */
@@ -34,6 +36,7 @@ public class Ventas extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ClienteDAO cDAO = new ClienteDAO();
 		ProductoDAO pdDAO = new ProductoDAO();
+		VentaDAO vDAO = new VentaDAO();
 		
 		if(request.getParameter("consultarCliente")!=null) {
 			String cedulaCliente = request.getParameter("cedulaCliente");
@@ -100,30 +103,60 @@ public class Ventas extends HttpServlet {
 		}
 		
 		if(request.getParameter("confirmar")!=null) {
-			int cant1, cant2, cant3,
-				precio1, precio2, precio3,
-				ivaPd1, ivaPd2, ivaPd3, totalIva,
-				valorT1, valorT2, valorT3, totalVenta, totalPagar;
+			int cant1=0, cant2=0, cant3=0,
+				precio1=0, precio2=0, precio3=0,
+				ivaPd1=0, ivaPd2=0, ivaPd3=0, totalIva=0,
+				valorT1=0, valorT2=0, valorT3=0,
+				totalVenta, totalPagar=0,
+				codigoPd1=0, codigoPd2=0, codigoPd3=0;
+			codigoPd1 = Integer.parseInt(request.getParameter("codigo1"));
 			cant1 = Integer.parseInt(request.getParameter("cant1"));
 			precio1 = Integer.parseInt(request.getParameter("precio1"));
 			valorT1 = cant1 * precio1;
-			//ivaPd1 = valorT1 / 100 * Integer.parseInt(request.getParameter("iva1"));
+			ivaPd1 = valorT1 / 100 * Integer.parseInt(request.getParameter("iva1"));
 			
 			cant2 = Integer.parseInt(request.getParameter("cant2"));
 			precio2 = Integer.parseInt(request.getParameter("precio2"));
 			valorT2 = cant2 * precio2;
-			//ivaPd2 = valorT2 / 100 * Integer.parseInt(request.getParameter("iva2"));
+			ivaPd2 = valorT2 / 100 * Integer.parseInt(request.getParameter("iva2"));
 			
 			cant3 = Integer.parseInt(request.getParameter("cant3"));
 			precio3 = Integer.parseInt(request.getParameter("precio3"));
 			valorT3 = cant3 * precio3;
-			//ivaPd3 = valorT3 / 100 * Integer.parseInt(request.getParameter("iva3"));
+			ivaPd3 = valorT3 / 100 * Integer.parseInt(request.getParameter("iva3"));
 			
 			totalVenta = valorT1 + valorT2 + valorT3;
-			totalIva = totalVenta * 19/100;
+			totalIva = ivaPd1+ivaPd2+ivaPd3;
 			totalPagar = totalVenta + totalIva;
 			
-			response.sendRedirect("Ventas.jsp?cant1="+cant1+"&&valorT1="+valorT1+"&&cant2="+cant2+"&&valorT2="+valorT2+"&&cant3="+cant3+"&&valorT3="+valorT3+"&&totalVenta="+totalVenta+"&&totalIva="+totalIva+"&&totalPagar="+totalPagar);
+			//insertar la venta en la base de datos
+			String cCliente; 
+			String cUsuario = "1032";
+			cCliente = request.getParameter("cCliente");
+			VentaDTO vDTO = new VentaDTO(cUsuario, cCliente, totalVenta, totalIva, totalPagar);
+			if(vDAO.crearVenta(vDTO)) {
+				//insertar el detalle de venta en la base de datos
+				int cant, codigoV, vTotal, vVenta, vIva;
+				codigoV = vDAO.consultarCodigoVenta();
+				//DetalleVentaDTO dvDTO = new DetalleVentaDTO("cant"+i, "codigoPd"+i, codigoV, "valorT"+i, "ivaPd"+i, ("valorT"+i)+("ivaPd"+i));
+				DetalleVentaDTO dvDTO1 = new DetalleVentaDTO(cant1, codigoPd1, codigoV, valorT1, ivaPd1, valorT1+ivaPd1);
+				DetalleVentaDTO dvDTO2 = new DetalleVentaDTO(cant2, codigoPd2, codigoV, valorT2, ivaPd2, valorT2+ivaPd2);
+				DetalleVentaDTO dvDTO3 = new DetalleVentaDTO(cant3, codigoPd3, codigoV, valorT3, ivaPd3, valorT1+ivaPd3);
+				vDAO.crearDetalleVenta(dvDTO1);
+				JOptionPane.showMessageDialog(null, "no pudimos llegar al 2 :(");
+				vDAO.crearDetalleVenta(dvDTO2);
+				vDAO.crearDetalleVenta(dvDTO3);
+				response.sendRedirect("Ventas.jsp?mensaje=Venta y detalle insertados exitosamente"+
+						"&&cant1="+cant1+"&&valorT1="+valorT1+"&&cant2="+cant2+"&&valorT2="+valorT2+"&&cant3="+cant3+
+						"&&valorT3="+valorT3+"&&totalVenta="+totalVenta+"&&totalIva="+totalIva+"&&totalPagar="+totalPagar+"&&codigoV="+codigoV);
+				//if(vDAO.crearDetalleVenta(dvDTO1) && vDAO.crearDetalleVenta(dvDTO2) && vDAO.crearDetalleVenta(dvDTO3)) {
+				//}
+				
+			}else {
+				response.sendRedirect("Ventas.jsp?mensaje=Error al crear la venta en servlet");
+			}		
+			
+			
 		}
 	}
 

@@ -9,7 +9,8 @@
 </head>
 <body>
 	<%!String 	cedulaCliente="", nombreCliente="", codigo1="", codigo2="", codigo3="",
-				nombrePd1="", nombrePd2="", nombrePd3="",		
+				nombrePd1="", nombrePd2="", nombrePd3="",
+				codigoV="",
 				estado="";
 		int 	cant1, cant2, cant3,
 				precioPd1, precioPd2, precioPd3,
@@ -39,6 +40,7 @@
 		codigo2 = request.getParameter("codigo2");
 		nombrePd2 = request.getParameter("nombrePd2");
 		precioPd2 = Integer.parseInt(request.getParameter("precioPd2"));
+		ivaPd2 = Integer.parseInt(request.getParameter("ivaPd2"));
 	}
 	%>
 	
@@ -47,6 +49,7 @@
 		codigo3 = request.getParameter("codigo3");
 		nombrePd3 = request.getParameter("nombrePd3");
 		precioPd3 = Integer.parseInt(request.getParameter("precioPd3"));
+		ivaPd3 = Integer.parseInt(request.getParameter("ivaPd3"));		
 	}
 	%>
 	
@@ -61,6 +64,7 @@
 		totalVenta = Integer.parseInt(request.getParameter("totalVenta"));
 		totalIva = Integer.parseInt(request.getParameter("totalIva"));
 		totalPagar = Integer.parseInt(request.getParameter("totalPagar"));
+		codigoV = request.getParameter("codigoV");
 	}
 	%>
 	
@@ -91,11 +95,12 @@
         <div class="consultaC">
             <label for="">Cedula</label>
             <input type="text" name="cedulaCliente" value="<%=cedulaCliente%>" <%=estado%>>
+            <input type="hidden" name="cCliente" value="<%=cedulaCliente%>">
             <button type="submit" name="consultarCliente">Consultar</button>
             <label for="">Cliente</label>
             <input type="text" name="nombreCliente" value="<%=nombreCliente%>" <%=estado%>>
             <label for="">Consecutivo</label>
-            <input type="text" name="consecutivoVenta">
+            <input type="text" name="consecutivoVenta" value="<%=codigoV%>">
         </div>
 
         <div class="productos">
