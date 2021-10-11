@@ -1,6 +1,9 @@
 package Controlador;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,12 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
+import com.google.gson.Gson;
+
 import Modelo.VentaDTO;
 import Modelo.ClienteDAO;
 import Modelo.ClienteDTO;
 import Modelo.DetalleVentaDTO;
 import Modelo.ProductoDAO;
 import Modelo.ProductoDTO;
+import Modelo.UsuarioDAO;
+import Modelo.UsuarioDTO;
 import Modelo.VentaDAO;
 /**
  * Servlet implementation class Ventas
@@ -154,10 +161,14 @@ public class Ventas extends HttpServlet {
 				
 			}else {
 				response.sendRedirect("Ventas.jsp?mensaje=Error al crear la venta en servlet");
-			}		
-			
-			
+			}
 		}
+		//Formato Json con Gson
+		ArrayList<UsuarioDTO> lista = new ArrayList<>();
+		UsuarioDAO uDAO = new UsuarioDAO();
+		lista = uDAO.listarUsuarios();
+		PrintWriter escribir = response.getWriter();
+		Gson datos = new Gson();
+		escribir.println(datos.toJson(lista));
 	}
-
 }

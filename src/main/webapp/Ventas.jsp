@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/Ventas.js"></script>
 <title>Modulo Ventas</title>
 <link rel="stylesheet" href="css/estilosVentas.css">
 </head>

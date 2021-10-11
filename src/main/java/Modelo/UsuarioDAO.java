@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 import Controlador.Conexion;
 
@@ -64,15 +66,33 @@ public class UsuarioDAO {
 	}
 	
 	public boolean eliminarUsuario(String cedula) {
-		boolean resultado = false;
+		boolean bool = false;
 		try {
-			String eliminar = "delete from usuarios where cedula_usuario=?";
+			String eliminar = "DELETE FROM usuarios WHERE cedula_usuario=?";
 			ps = con.prepareStatement(eliminar);
 			ps.setString(1, cedula);
-			resultado = ps.executeUpdate()>0;
+			bool = ps.executeUpdate()>0;
 		} catch (SQLException sqle) {
 			JOptionPane.showMessageDialog(null, "Error al eliminar el usuario. "+sqle);
 		}
-		return resultado;	
+		return bool;	
+	}
+	
+	public ArrayList<UsuarioDTO> listarUsuarios(){
+		UsuarioDTO uDTO = null;
+		ArrayList<UsuarioDTO> listaU = new ArrayList<>();
+		try {
+			String seleccionar = "SELECT * FROM usuarios";
+			ps = con.prepareStatement(seleccionar);
+			ps.executeUpdate();
+			resultado = ps.executeQuery();
+			while(resultado.next()) {
+				uDTO = new UsuarioDTO(resultado.getString(1), resultado.getString(2), resultado.getString(3), resultado.getString(4), resultado.getString(5));
+				listaU.add(uDTO);
+			}
+		} catch (SQLException sqle) {
+			JOptionPane.showMessageDialog(null, "Error al listar los usuarios. "+sqle);
+		}
+		return listaU;
 	}
 }

@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Modulo Reportes</title>
-<link rel="stylesheet" href="css/estilosUsuarios.css">
+<link rel="stylesheet" href="css/estilosReportes.css">
 </head>
 <body>
 	<%!String cedula=""; String nombre="", correo="", user="", pass="", estado="";%>
@@ -36,5 +36,13 @@
 			</ul>
 		</nav>
 	</header>
+	
+	<form action="">
+		<div class="Botones">
+			<button type="submit" name="listadoU" value="">Listado Usuarios</button>
+			<button type="submit" name="listadoU" value="">Listado Clientes</button>
+			<button type="submit" name="listadoU" value="">Listado Ventas por Cliente</button>
+		</div>
+	</form>
 </body>
 </html>
