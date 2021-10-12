@@ -80,19 +80,18 @@ public class UsuarioDAO {
 	
 	public ArrayList<UsuarioDTO> listarUsuarios(){
 		UsuarioDTO uDTO = null;
-		ArrayList<UsuarioDTO> listaU = new ArrayList<>();
+		ArrayList<UsuarioDTO> lista = new ArrayList<>();
 		try {
 			String seleccionar = "SELECT * FROM usuarios";
 			ps = con.prepareStatement(seleccionar);
-			ps.executeUpdate();
 			resultado = ps.executeQuery();
 			while(resultado.next()) {
 				uDTO = new UsuarioDTO(resultado.getString(1), resultado.getString(2), resultado.getString(3), resultado.getString(4), resultado.getString(5));
-				listaU.add(uDTO);
+				lista.add(uDTO);
 			}
 		} catch (SQLException sqle) {
-			JOptionPane.showMessageDialog(null, "Error al listar los usuarios. "+sqle);
+			JOptionPane.showMessageDialog(null, "Error al listar los usuarios en dao. "+sqle);
 		}
-		return listaU;
+		return lista;
 	}
 }

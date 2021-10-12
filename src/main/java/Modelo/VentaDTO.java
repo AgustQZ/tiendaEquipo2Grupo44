@@ -8,7 +8,9 @@ public class VentaDTO {
 	private int ivaVenta;
 	private int totalVenta;
 	
-	public VentaDTO(String cUsuario, String cCliente, int valorVenta, int ivaVenta, int totalVenta) {
+	public VentaDTO(int codVenta, String cUsuario, String cCliente, int valorVenta, int ivaVenta, int totalVenta) {
+		super();
+		this.codVenta = codVenta;
 		this.cUsuario = cUsuario;
 		this.cCliente = cCliente;
 		this.valorVenta = valorVenta;
@@ -16,7 +18,13 @@ public class VentaDTO {
 		this.totalVenta = totalVenta;
 	}
 
-	
+	public VentaDTO(String cUsuario, String cCliente, int valorVenta, int ivaVenta, int totalVenta) {
+		this.cUsuario = cUsuario;
+		this.cCliente = cCliente;
+		this.valorVenta = valorVenta;
+		this.ivaVenta = ivaVenta;
+		this.totalVenta = totalVenta;
+	}
 
 	public int getCodVenta() {
 		return codVenta;

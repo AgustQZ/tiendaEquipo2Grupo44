@@ -3,11 +3,11 @@ $(document).ready(function(){
 	
 	function listarLibros(){
 		$.ajax({
-			type: "post",
-			url: "Ventas",
-			dataType: "Json",
-			success: function(resultado){
-				console.log(resultado)
+			type:"post",
+			url:"Ventas",
+			dataType:"Json",
+			success: function(result){
+				console.log(result)
 			}
 		})
 	}

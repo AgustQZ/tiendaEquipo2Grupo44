@@ -56,8 +56,9 @@ nav ul li a:hover {
 }
 
 .Botones {
-	margin: 20px auto;
-	width: 400px;
+	margin: auto;
+	margin-bottom: 20px;
+	width: 300px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -70,8 +71,8 @@ nav ul li a:hover {
 	font-size: 20px;
 	background-color: darkgray;
 	color: white;
+	margin-top: 20px;
 	border-radius: 5px;
-	margin: 20px 10px 0 10px;
 	border: none;
 }
 
@@ -79,3 +80,30 @@ nav ul li a:hover {
 	background-color: rgb(149, 149, 149);
 	color: rgb(100, 100, 100);
 }
+
+table{
+	width: 700px;
+	margin: auto;
+	background-color: #e8e8e8;
+	border-collapse: collapse;
+	font-family: calibri;
+	font-size: 18px;
+}
+
+th{
+	padding-top: 10px;
+	font-size: 20px;
+ 	text-align: center;
+	color: gray;
+}
+
+td{
+	padding: 8px;
+	text-align: left;
+	color: gray;
+}
+
+
+
+
+

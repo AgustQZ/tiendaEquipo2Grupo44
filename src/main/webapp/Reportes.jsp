@@ -4,22 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/Reportes.js"></script>
 <title>Modulo Reportes</title>
 <link rel="stylesheet" href="css/estilosReportes.css">
 </head>
 <body>
-	<%!String cedula=""; String nombre="", correo="", user="", pass="", estado="";%>
-
-	<%
-	if(request.getParameter("cedula")!=null){
-		cedula = request.getParameter("cedula");
-		nombre = request.getParameter("nombre");
-		correo = request.getParameter("correo");
-		pass = request.getParameter("pass");
-		user = request.getParameter("user");
-		estado= "disabled";
-	}
-	%>
 
 	<div class="titulo">
 		<h1>Gestion de Reportes</h1>
@@ -36,13 +26,13 @@
 			</ul>
 		</nav>
 	</header>
+	<div class="Botones">
+		<button id="listarUsuarios">Listado Usuarios</button>
+		<button id="listarClientes">Listado Clientes</button>
+		<button id="listarVentas">Listado Ventas por Cliente</button>
+	</div>
+	<table id="tabla">
+	</table>
 	
-	<form action="">
-		<div class="Botones">
-			<button type="submit" name="listadoU" value="">Listado Usuarios</button>
-			<button type="submit" name="listadoU" value="">Listado Clientes</button>
-			<button type="submit" name="listadoU" value="">Listado Ventas por Cliente</button>
-		</div>
-	</form>
 </body>
 </html>
