@@ -41,6 +41,7 @@ public class Reportes extends HttpServlet {
 		String opcion = request.getParameter("opcionjs");
 		PrintWriter escribir = response.getWriter();
 		Gson datos = new Gson();
+		VentaDAO vDAO = new VentaDAO();
 		
 		if(opcion.equals("Usuarios")) {
 			UsuarioDAO uDAO = new UsuarioDAO();
@@ -57,10 +58,16 @@ public class Reportes extends HttpServlet {
 		}
 		
 		if(opcion.equals("Ventas")) {
-			VentaDAO vDAO = new VentaDAO();
+			vDAO = new VentaDAO();
 			ArrayList<VentaDTO> listaV = new ArrayList<>();
 			listaV = vDAO.listarVentas();
 			escribir.println(datos.toJson(listaV));
+		}
+		
+		if(request.getParameter("listarVentas") != null) {
+			vDAO = new VentaDAO();
+			String valorT = vDAO.totalVentas();
+			response.sendRedirect("Reportes.jsp?valorT="+valorT);
 		}
 	}
 

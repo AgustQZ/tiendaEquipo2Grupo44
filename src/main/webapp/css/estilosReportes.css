@@ -103,7 +103,29 @@ td{
 	color: gray;
 }
 
+#total{
+ 	display: none;
+ 	width: 700px;
+	margin: auto;
+	background-color: #e8e8e8;
+}
 
+.totalA{
+	width: 700px;
+ 	display: flex;
+ 	justify-content: flex-end;
+ 	padding-bottom: 10px;
+ 	
+}
 
+.totalA label{
+	font-family: calibri;
+	font-size: 24px;
+	color: gray;
+}
 
+.totalA input{
+	width: 120px;
+	margin: 0px 10px;
+}
 

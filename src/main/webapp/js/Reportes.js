@@ -92,6 +92,10 @@ $(document).ready(function(){
 		})
 	}
 	
+	function verTotalVentas(){
+		document.getElementById('total').style.display = "block"
+	}
+	
 	$('#listarUsuarios').on('click',function(){
 			listarUsuarios();
 		})
@@ -101,7 +105,8 @@ $(document).ready(function(){
 		})
 	
 	$('#listarVentas').on('click',function(){
-			listarVentas();
+			listarVentas(),
+			verTotalVentas();
 		})
 	
 })

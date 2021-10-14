@@ -10,6 +10,16 @@
 <link rel="stylesheet" href="css/estilosReportes.css">
 </head>
 <body>
+	
+	<%
+	String valorT="";
+	%>
+	
+	<%
+	if(request.getParameter("valorT")!=null){
+		valorT = request.getParameter("valorT");
+	}
+	%>
 
 	<div class="titulo">
 		<h1>Gestion de Reportes</h1>
@@ -33,6 +43,10 @@
 	</div>
 	<table id="tabla">
 	</table>
-	
+	<form id="total" action="Reportes" method="post">
+		<div class="totalA">
+			<label>Total Ventas</label><input type="text" name="totalV" value="<%=valorT%>">
+		</div>
+	</form>
 </body>
 </html>

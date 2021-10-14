@@ -76,16 +76,33 @@ public class VentaDAO {
 		VentaDTO vDTO = null;
 		ArrayList<VentaDTO> lista = new ArrayList<>();
 		try {
-			String seleccionar = "SELECT * FROM ventas";
-			ps = con.prepareStatement(seleccionar);
+			String consulta = "select cedula_cliente, sum(total_venta) from ventas group by cedula_cliente;";
+			ps = con.prepareStatement(consulta);
 			resultado = ps.executeQuery();
-			while(resultado.next()) {
-				vDTO = new VentaDTO(resultado.getInt(1), resultado.getString(1), resultado.getString(2), resultado.getInt(3), resultado.getInt(4), resultado.getInt(5));
-				lista.add(vDTO);
+			String cedulaCliente, sumaVentas;
+			while(resultado.next()) {				
+				cedulaCliente = resultado.getString(1);
+				sumaVentas = resultado.getString(2);
 			}
+			consulta = "SELECT nombre_cliente FROM clientes WHERE cedula_cliente=?;";
+			ps = con.prepareStatement(consulta);
+			
 		} catch (SQLException sqle) {
-			JOptionPane.showMessageDialog(null, "Error al listar las ventas en dao. "+sqle);
 		}
 		return lista;
+	}
+	
+	public String totalVentas() {
+		String totalV = null;
+		String consulta = "SELECT SUM(total_venta) FROM ventas;";
+		try {
+			ps = con.prepareStatement(consulta);
+			resultado = ps.executeQuery();
+			while(resultado.next()) {
+				totalV = resultado.getString(1);
+			}
+		} catch (SQLException sqle) {
+		}
+		return totalV;
 	}
 }
