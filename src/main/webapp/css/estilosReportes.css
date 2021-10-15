@@ -10,7 +10,7 @@ body {
 }
 
 .titulo {
-	background-color: gray;
+	background: linear-gradient(#001b1e, #014049);
 	color: white;
 }
 
@@ -23,7 +23,7 @@ h1 {
 }
 
 header {
-	border-bottom: 1px solid gray;
+	border-bottom: 1px solid #04717a;
 	padding: 10px 0 10px 0;
 }
 
@@ -45,11 +45,11 @@ nav ul li {
 nav ul li a {
 	text-decoration: none;
 	font-size: 20px;
-	color: gray;
+	color:#04717a;
 }
 
 nav ul li a:hover {
-	background-color: gray;
+	background-color: #014049;
 	color: white;
 	padding: 10px 0 10px 0;
 	transition: ease-in-out 0.2s;
@@ -69,7 +69,7 @@ nav ul li a:hover {
 	height: 40px;
 	font-family: calibri;
 	font-size: 20px;
-	background-color: darkgray;
+	background: linear-gradient(#001b1e, #014049);
 	color: white;
 	margin-top: 20px;
 	border-radius: 5px;
@@ -94,13 +94,13 @@ th{
 	padding-top: 10px;
 	font-size: 20px;
  	text-align: center;
-	color: gray;
+	color:#04717a;
 }
 
 td{
 	padding: 8px;
-	text-align: left;
-	color: gray;
+	text-align: center;
+	color:#04717a;
 }
 
 #total{
@@ -121,7 +121,7 @@ td{
 .totalA label{
 	font-family: calibri;
 	font-size: 24px;
-	color: gray;
+	color:#04717a;
 }
 
 .totalA input{

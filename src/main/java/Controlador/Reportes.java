@@ -63,12 +63,6 @@ public class Reportes extends HttpServlet {
 			listaV = vDAO.listarVentas();
 			escribir.println(datos.toJson(listaV));
 		}
-		
-		if(request.getParameter("listarVentas") != null) {
-			vDAO = new VentaDAO();
-			String valorT = vDAO.totalVentas();
-			response.sendRedirect("Reportes.jsp?valorT="+valorT);
-		}
 	}
 
 }

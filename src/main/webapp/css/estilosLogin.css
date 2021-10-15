@@ -7,19 +7,24 @@
 }
 
 body {
+	min-height:100vh;
 	font-family: calibri, sans serif;
+ 	background-image: url(https://image.freepik.com/free-photo/abstract-digital-grid-black-background_53876-97647.jpg);
+    background-size: cover;
+    background-position:center;
 }
 
 h1 {
 	text-align: center;
 	margin-top: 70px;
-	color: gray;
-	font-size: 32px;
+	margin-bottom: 30px;
+	color: #01d3e0;
+	font-size: 40px;
 	font-weight: normal;
 }
 
 .contenedor01 {
-	width: 600px;
+	width: 700px;
 	margin: auto;
 	padding: 50px;
 }
@@ -41,7 +46,7 @@ h1 {
 	margin-right: 20px;
 	font-size: 20px;
 	text-align: right;
-	color: gray;
+	color: #04717a;
 }
 
 .contenedorIN input {
@@ -63,11 +68,12 @@ h1 {
 	height: 40px;
 	font-family: calibri;
 	font-size: 20px;
-	background-color: darkgray;
+	background: linear-gradient(#001b1e, #020305);
 	color: white;
 	border-radius: 5px;
 	margin: 55px 10px 0 10px;
-	border: none;
+	border-color: #04717a;
+	border-bottom-width: thin;
 }
 
 .contenedorBotones input:hover {

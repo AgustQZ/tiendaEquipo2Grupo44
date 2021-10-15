@@ -76,17 +76,13 @@ public class VentaDAO {
 		VentaDTO vDTO = null;
 		ArrayList<VentaDTO> lista = new ArrayList<>();
 		try {
-			String consulta = "select cedula_cliente, sum(total_venta) from ventas group by cedula_cliente;";
+			String consulta = "SELECT clientes.cedula_cliente, clientes.nombre_cliente, sum(ventas.total_venta) FROM clientes INNER JOIN ventas ON clientes.cedula_cliente= ventas.cedula_cliente GROUP BY ventas.cedula_cliente;";
 			ps = con.prepareStatement(consulta);
 			resultado = ps.executeQuery();
-			String cedulaCliente, sumaVentas;
-			while(resultado.next()) {				
-				cedulaCliente = resultado.getString(1);
-				sumaVentas = resultado.getString(2);
+			while(resultado.next()) {
+				vDTO = new VentaDTO(resultado.getString(1), resultado.getString(2), resultado.getInt(3));
+				lista.add(vDTO);
 			}
-			consulta = "SELECT nombre_cliente FROM clientes WHERE cedula_cliente=?;";
-			ps = con.prepareStatement(consulta);
-			
 		} catch (SQLException sqle) {
 		}
 		return lista;

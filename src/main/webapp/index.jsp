@@ -9,7 +9,7 @@
 </head>
 <body>
 	<form action="Login" method="post" class="contenedor01">
-		<h1>Bienvenido a la Tienda Genérica</h1>
+		<h1>Bienvenido a la Tienda de los PCs</h1>
 		<div class="contenedorIN">
 			<div>
 				<label for="">Usuario</label> <label for="">Contraseña</label>

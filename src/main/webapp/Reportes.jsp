@@ -11,9 +11,7 @@
 </head>
 <body>
 	
-	<%
-	String valorT="";
-	%>
+	<%! String valorT="";%>
 	
 	<%
 	if(request.getParameter("valorT")!=null){
@@ -35,18 +33,19 @@
 				<li><a href="Reportes.jsp">Reportes</a></li>
 			</ul>
 		</nav>
-	</header>
-	<div class="Botones">
-		<button id="listarUsuarios">Listado Usuarios</button>
-		<button id="listarClientes">Listado Clientes</button>
-		<button id="listarVentas">Listado Ventas por Cliente</button>
-	</div>
-	<table id="tabla">
-	</table>
-	<form id="total" action="Reportes" method="post">
-		<div class="totalA">
-			<label>Total Ventas</label><input type="text" name="totalV" value="<%=valorT%>">
+		</header>
+		<div class="Botones">
+			<button id="listarUsuarios">Listado Usuarios</button>
+			<button id="listarClientes">Listado Clientes</button>
+			<button id="listarVentas">Listado Ventas por Cliente</button>
 		</div>
-	</form>
+		<table id="tabla">
+		</table>
+		<form action="Reportes" method="post" id="total">
+			<div class="totalA">
+				<label>Total Ventas</label>
+				<input type="text" name="totalV" value="<%=valorT%>">
+			</div>
+		</form>
 </body>
 </html>

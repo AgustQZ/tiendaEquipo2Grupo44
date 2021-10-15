@@ -10,7 +10,7 @@ html {
 }
 
 .titulo {
-    background-color: gray;
+    background: linear-gradient(#001b1e, #014049);
     color: white;
 }
 
@@ -23,7 +23,7 @@ h1 {
 }
 
 header {
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #04717a;
     padding: 10px 0 10px 0;
 }
 
@@ -45,11 +45,11 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     font-size: 20px;
-    color: gray;
+    color:#04717a;
 }
 
 nav ul li a:hover {
-    background-color: gray;
+    background-color: #014049;
     color: white;
     padding: 10px 0 10px 0;
     transition: ease-in-out 0.2s;
@@ -64,7 +64,7 @@ h2 {
     display: flex;
     justify-content: center;
     width: 1000px;
-    color: gray;
+    color:#04717a;
     margin: 30px auto 0 auto;
     font-family: Calibri, sans-serif;
     font-size: 20px;
@@ -81,7 +81,7 @@ h2 {
 #examinar {
     width: 400px;
     height: 28px;
-    color: rgb(110, 110, 110);
+    color:#04717a;
     font-weight: lighter;
 }
 
@@ -89,8 +89,8 @@ h2 {
     font-size: 20px;
     width: 150px;
     height: 40px;
-    background-color: darkgray;
-    color: white;
+    background: #F2F2F2;
+    color:#04717a;
     border-radius: 5px;
     border: none;
 }
@@ -100,7 +100,7 @@ h2 {
     height: 40px;
     font-size: 18px;
     color: white;
-    background-color: gray;
+    background: linear-gradient(#001b1e, #014049);
     border: none;
     border-radius: 5px;
 }
@@ -126,7 +126,7 @@ h2 {
 
 .contenedorDown label {
     display: inline-block;
-    color: gray;
+    color:#04717a;
     font-size: 20px;
 }
 
@@ -141,7 +141,7 @@ h2 {
     height: 40px;
     font-size: 20px;
     color: white;
-    background-color: gray;
+    background: linear-gradient(#001b1e, #014049);
     border: none;
     border-radius: 5px;
 }
@@ -163,7 +163,7 @@ h2 {
     height: 40px;
     font-size: 20px;
     color: white;
-    background-color: gray;
+    background: linear-gradient(#001b1e, #014049);
     border: none;
     border-radius: 5px;
     margin: 40px 10px 0 10px;

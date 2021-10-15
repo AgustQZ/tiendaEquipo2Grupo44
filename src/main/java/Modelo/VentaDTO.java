@@ -7,17 +7,8 @@ public class VentaDTO {
 	private int valorVenta;
 	private int ivaVenta;
 	private int totalVenta;
+	private String nCliente;
 	
-	public VentaDTO(int codVenta, String cUsuario, String cCliente, int valorVenta, int ivaVenta, int totalVenta) {
-		super();
-		this.codVenta = codVenta;
-		this.cUsuario = cUsuario;
-		this.cCliente = cCliente;
-		this.valorVenta = valorVenta;
-		this.ivaVenta = ivaVenta;
-		this.totalVenta = totalVenta;
-	}
-
 	public VentaDTO(String cUsuario, String cCliente, int valorVenta, int ivaVenta, int totalVenta) {
 		this.cUsuario = cUsuario;
 		this.cCliente = cCliente;
@@ -25,6 +16,15 @@ public class VentaDTO {
 		this.ivaVenta = ivaVenta;
 		this.totalVenta = totalVenta;
 	}
+	//constructor Reporte ventas
+	public VentaDTO(String cCliente, String nCliente, int totalVenta) {
+		super();
+		this.cCliente = cCliente;
+		this.nCliente = nCliente;
+		this.totalVenta = totalVenta;
+	}
+
+
 
 	public int getCodVenta() {
 		return codVenta;
@@ -63,5 +63,12 @@ public class VentaDTO {
 		this.totalVenta = totalVenta;
 	}
 	
+	public String getnCliente() {
+		return nCliente;
+	}
+	
+	public void setnCliente(String nCliente) {
+		this.nCliente = nCliente;
+	}
 	
 }

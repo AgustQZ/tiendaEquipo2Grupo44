@@ -71,26 +71,21 @@ $(document).ready(function(){
 				var tabla=document.getElementById("tabla")
 				tabla.innerHTML=''
 				tabla.innerHTML+=`<tr class="cssss">
-				<th>Codigo Venta</th>
-				<th>Cedula Usuario</th>
 				<th>Cedula Cliente</th>
-				<th>Valor Venta</th>
-				<th>Iva Venta</th>
-				<th>Total Venta</th>
+				<th>Nombre Cliente</th>
+				<th>Total Venta por Cliente</th>
 				</tr>`
 				for(let fila of resultado){
 					tabla.innerHTML+=`<tr>
-					<td>${fila.codVenta}</td>
-					<td>${fila.cUsuario}</td>
 					<td>${fila.cCliente}</td>
-					<td>${fila.valorVenta}</td>
-					<td>${fila.ivaVenta}</td>
+					<td>${fila.nCliente}</td>
 					<td>${fila.totalVenta}</td>
 					</tr>`
 				}
 			}
 		})
 	}
+				
 	
 	function verTotalVentas(){
 		document.getElementById('total').style.display = "block"
